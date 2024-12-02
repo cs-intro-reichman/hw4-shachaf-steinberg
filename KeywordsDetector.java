@@ -21,24 +21,50 @@ public class KeywordsDetector {
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        for (int i = 0; i < sentences.length; i++) {
-            for (int n = 0; n < keywords.length; n++) {
-                for (int k = 0; k <= sentences[i].length() - keywords[n].length(); k++) {
+
+  
+        String[] newSentences = new String[sentences.length];
+		for (int x = 0; x < sentences.length ;x++) {
+            newSentences[x] = lowerCase(sentences[x]);
+        }
+        String[] newKeywords = new String[keywords.length];
+		for (int z = 0; z < keywords.length ;z++) {
+           newKeywords[z] = lowerCase(keywords[z]);
+        }
+
+        // Iterates over all sentences
+        for (int i = 0; i < newSentences.length; i++) {
+            // Iterates over all keywords for each sentence
+            for (int n = 0; n < newKeywords.length; n++) {
+                // Iterates through all possible starting positions in the sentence where a keyword can fit
+                for (int k = 0; k <= newSentences[i].length() - newKeywords[n].length(); k++) {
                     int count = 0;
-                    for (int j = 0; j < keywords[n].length(); j++) {
-                       if (sentences[i].charAt(k + j) == keywords[n].charAt(j)) {
-                                count++;
-                            } else if (sentences[i].charAt(k + j) != keywords[n].charAt(j)) {
-                                break;
-                            }
+                    //Compares each character of the keyword with the corresponding characters in the sentence
+                    for (int j = 0; j < newKeywords[n].length(); j++) {
+                       if (newSentences[i].charAt(k + j) == newKeywords[n].charAt(j)) {
+                            count++;
+                        } else {
+                            break;
                         }
-                    if (count == keywords[n].length()) {
-                        System.out.println(sentences[i]);
+                    }
+                    if (count == newKeywords[n].length()) {
+                        System.out.println(newSentences[i]);
                         break;
                     }
-                }
-                
+                }   
             }
-        }      
+        }
+    }
+    /** Returns the lowercase version of the given string. */
+    public static String lowerCase(String str) {
+    String newString = "";
+        for (int i = 0; i < (str.length()) ;i++) {
+            char c = str.charAt(i); 
+            if ((c >= 65) && (c <= 90)) {
+                c += 32;
+            }
+            newString += c;
+        }
+        return newString;
     }
 }
