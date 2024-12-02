@@ -7,7 +7,7 @@ public class Primes {
         System.out.println("Prime numbers up to " + n + ":");
         primeNums(n, arr);
         System.out.println("There are " + primeAmount(n, arr) + " primes between 2 and " + n + 
-                           " (" + primePerc(primeAmount(n, arr), n - 1) + "% are primes)");
+                           " (" + primePerc(primeAmount(n, arr), n) + "% are primes)");
     }
     // Prints all the prime numbers from 2 to n
     public static void primeNums(int n, boolean[] arr) {
