@@ -12,20 +12,21 @@ public class Primes {
     // Prints all the prime numbers from 2 to n
     public static void primeNums(int n, boolean[] arr) {
         int i = 2;
-        int x = 2;
         while (i <= n) {
             arr[i] = true;
             i++;
         }
         i = 2;
+        int x = 2;
         while ((i <= n)) { 
-            if ((i % x == 0) && (i != x)) {
-                arr[i] = false;
-            } 
-            i++; 
-            if ((i == n) && (x <= Math.sqrt(n))) {
+            while (x <= (double)Math.sqrt(n)) {
+                if ((i % x == 0) && (i != x)) {
+                    arr[i] = false;
+                }  
                 x++;
             }
+            i++;
+            x = 2;
         } 
         i = 2;
         while (i <= n) {
