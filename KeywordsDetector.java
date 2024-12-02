@@ -48,7 +48,7 @@ public class KeywordsDetector {
                         }
                     }
                     if (count == newKeywords[n].length()) {
-                        System.out.println(newSentences[i]);
+                        System.out.println(sentences[i]);
                         break;
                     }
                 }   
